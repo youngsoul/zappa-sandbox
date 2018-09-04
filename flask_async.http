@@ -1,0 +1,10 @@
+
+GET  https://5y2yg4v2x3.execute-api.us-east-1.amazonaws.com/flask_async/payload
+
+###
+
+GET https://5y2yg4v2x3.execute-api.us-east-1.amazonaws.com/flask_async/async-response/4a373a35-95cc-4663-8de4-85bc296d5a64?backoff=5
+
+###
+
+

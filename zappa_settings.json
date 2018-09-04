@@ -1,0 +1,15 @@
+{
+    "flask_async": {
+        "app_function": "FlaskAsync.app",
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "zappa-sandbox",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-zuqeju0v0",
+        "async_resources": true,
+        "async_response_table": "flask_async_response",
+        "async_response_table_read_capacity": 2,
+        "async_response_table_write_capacity": 1,
+        "timeout_seconds": 60
+    }
+}
