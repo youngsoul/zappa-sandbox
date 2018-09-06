@@ -38,3 +38,10 @@ go to the /payload endpoint and the browser will keep reloading until the respon
 zappa deploy flask_async
 zappa update flask_async
 zappa undeploy flask_async --remove-logs
+
+## Zappa S3 Events
+
+make sure to deploy the configuation first, then schedule
+
+zappa deploy s3_events_env
+zappa schedule s3_events_env

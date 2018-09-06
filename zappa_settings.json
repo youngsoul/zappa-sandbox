@@ -11,5 +11,26 @@
         "async_response_table_read_capacity": 2,
         "async_response_table_write_capacity": 1,
         "timeout_seconds": 60
+    },
+    "s3_events_env": {
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "s3_event_test",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-zuqeju0v0",
+        "timeout_seconds": 60,
+        "lambda_handler": "S3Events.lambda_handler",
+        "use_apigateway": false,
+        "events": [
+            {
+                "function": "S3Events.process_upload_function",
+                "event_source": {
+                    "arn": "arn:aws:s3:::pryan-landing",
+                    "events": [
+                        "s3:ObjectCreated:*"
+                    ]
+                }
+            }
+        ]
     }
 }
