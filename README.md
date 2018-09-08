@@ -41,15 +41,8 @@ zappa undeploy flask_async --remove-logs
 
 ## Zappa S3 Events
 
-I believe the Zappa documentation is not quite right for this event type.
+For S3 events to work, you **CANNOT** include the lambda_handler in the config.  By leaving this out, Zappa will install its own default lambda implementation that will handle the functions for the events.
 
-If you read here, [Executing in Response to AWS Events](https://github.com/Miserlou/Zappa#executing-in-response-to-aws-events)
-
-you are led to believe that the *function* value should be the module.function_name to call when that particular event is fired.  However what I found in practice is that the *function* value is used in the name and description of the S3 event created, but the lambda function that is called is the one specfied in *lambda_handler*. 
-
-Below when a file is uploaded to the pryan-landing bucket, then the lambda defined in S3Events.py, function *process_upload_function* will be called.
-
-The ramification of this is that if you define another event, then it will call the same lambda.
 
 
 ```json
@@ -60,11 +53,10 @@ The ramification of this is that if you define another event, then it will call 
         "runtime": "python3.6",
         "s3_bucket": "pryan-landing",
         "timeout_seconds": 60,
-        "lambda_handler": "S3Events.process_upload_function",
         "use_apigateway": false,
         "events": [
             {
-                "function": "s3_event_landing",
+                "function": "S3Events.process_upload_function",
                 "event_source": {
                     "arn": "arn:aws:s3:::pryan-landing",
                     "events": [
@@ -73,7 +65,7 @@ The ramification of this is that if you define another event, then it will call 
                 }
             },
             {
-                "function": "s3_event_staging",
+                "function": "S3Events.process_upload_function2",
                 "event_source": {
                     "arn": "arn:aws:s3:::pryan-staging",
                     "events": [
