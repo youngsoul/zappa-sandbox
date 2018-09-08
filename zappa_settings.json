@@ -12,25 +12,35 @@
         "async_response_table_write_capacity": 1,
         "timeout_seconds": 60
     },
-    "s3_events_env": {
+    "s3_env": {
         "aws_region": "us-east-1",
         "profile_name": "spr",
         "project_name": "s3_event_test",
         "runtime": "python3.6",
-        "s3_bucket": "zappa-zuqeju0v0",
+        "s3_bucket": "pryan-landing",
         "timeout_seconds": 60,
-        "lambda_handler": "S3Events.lambda_handler",
+        "lambda_handler": "S3Events.process_upload_function",
         "use_apigateway": false,
         "events": [
             {
-                "function": "S3Events.process_upload_function",
+                "function": "s3_event_landing",
                 "event_source": {
                     "arn": "arn:aws:s3:::pryan-landing",
                     "events": [
                         "s3:ObjectCreated:*"
                     ]
                 }
+            },
+            {
+                "function": "s3_event_staging",
+                "event_source": {
+                    "arn": "arn:aws:s3:::pryan-staging",
+                    "events": [
+                        "s3:ObjectCreated:*"
+                    ]
+                }
             }
+
         ]
     }
 }

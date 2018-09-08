@@ -170,3 +170,5 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+/s3-events-s3-events-env-template-1536206148.json
+/s3-events-s3-events-env-template-1536206446.json

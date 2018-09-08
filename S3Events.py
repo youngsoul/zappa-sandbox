@@ -25,7 +25,7 @@ def process_upload_function(event, context):
         # Get the bytes from S3
         s3_client.download_file(bucket, key, '/tmp/' + key)  # Download this file to writable tmp space.
         file_bytes = open('/tmp/' + key).read()
-        print(file_bytes)
+        #print(file_bytes)
     except:
         pass
 
