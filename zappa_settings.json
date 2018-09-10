@@ -1,4 +1,13 @@
 {
+    "flask_simple": {
+        "app_function": "FlaskSimple.app",
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "zappa-simple",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-zuqeju0v0",
+        "timeout_seconds": 60
+    },
     "flask_async": {
         "app_function": "FlaskAsync.app",
         "aws_region": "us-east-1",
