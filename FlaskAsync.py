@@ -31,6 +31,18 @@ def response(response_id):
         'X-redirect-reason': "Not yet ready.",
     }
 
+"""
+capture_response=True, will cause the deployment to create a dynamodb table to capture the results:
+
+        "async_resources": true,
+        "async_response_table": "flask_async_response",
+        "async_response_table_read_capacity": 2,
+        "async_response_table_write_capacity": 1,
+        "timeout_seconds": 60
+
+Be sure that the timeout is such that the longrunner ( @task ) does not take longer than the timeout for the lambda.
+
+"""
 @task(capture_response=True)
 def longrunner(delay):
     print(f"FlaskAsync  longrunner sleeping...: {delay}")
