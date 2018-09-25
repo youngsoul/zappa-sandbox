@@ -1,0 +1,58 @@
+couple of more examples to consider
+
+    "load_data_env": {
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "load_data",
+        "runtime": "python3.6",
+        "s3_bucket": "pryan-landing",
+        "timeout_seconds": 300,
+        "use_apigateway": false,
+        "exclude": [
+            "artillery",
+            "logs"
+        ],
+
+        "events": [
+            {
+                "function": "DataLoadLambda.load_data",
+                "event_source": {
+                    "arn": "arn:aws:s3:::infutor.spr.test.data",
+                    "events": [
+                        "s3:ObjectCreated:*"
+                    ],
+                    "key_filters": [{
+					    "type": "prefix",
+					    "value": "trigger"
+				    }]
+                }
+            }
+        ]
+    },
+    "decomp_data_env": {
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "decompress_data",
+        "runtime": "python3.6",
+        "s3_bucket": "pryan-landing",
+        "timeout_seconds": 300,
+        "use_apigateway": false,
+        "events": [
+            {
+                "function": "DecompressLambda.decompress_data",
+                "event_source": {
+                    "arn": "arn:aws:s3:::infutor.spr.test.data",
+                    "events": [
+                        "s3:ObjectCreated:*"
+                    ],
+                    "key_filters": [{
+					    "type": "prefix",
+					    "value": "trigger/decompress"
+				    }]
+                }
+            }
+
+        ]
+    }
+
+}
