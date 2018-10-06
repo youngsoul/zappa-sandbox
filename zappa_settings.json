@@ -6,7 +6,19 @@
         "project_name": "zappa-simple",
         "runtime": "python3.6",
         "s3_bucket": "zappa-zuqeju0v0",
-        "timeout_seconds": 60
+        "timeout_seconds": 60,
+        "delete_s3_zip": false,
+        "log_level": "ERROR",
+        "exclude": [
+            "docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "S3Event.py"
+        ],
+
     },
     "flask_async": {
         "app_function": "FlaskAsync.app",
