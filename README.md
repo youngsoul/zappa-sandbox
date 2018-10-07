@@ -4,6 +4,12 @@ Repo contains example code for working with Zappa
 
 [Zappa](https://github.com/Miserlou/Zappa)
 
+## Gotchas
+
+- You cannot exclude *docs* directory.  If you exclude the docs directory, the WSGI lambda wont deploy and the log will have the follow error message:
+
+*Unable to import module 'handler': No module named 'botocore.docs'*
+
 
 ## AWS CLI
 

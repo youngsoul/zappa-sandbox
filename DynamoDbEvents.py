@@ -2,6 +2,11 @@ import json
 from random import randint, choice
 import boto3
 import string
+import logging
+
+logging.basicConfig()
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 dynamodb = boto3.resource('dynamodb')
 
@@ -40,13 +45,13 @@ def dynamo_events(event, context):
     :param context:
     :return:
     """
-    print("Received event: " + json.dumps(event, indent=2))
+    logger.debug("Received event: " + json.dumps(event, indent=2))
     for record in event['Records']:
-        print(f"eventID: {record['eventID']}")
-        print(f"eventName: {record['eventName']}")
-        print("DynamoDB Record: " + json.dumps(record['dynamodb'], indent=2))
+        logger.debug(f"eventID: {record['eventID']}")
+        logger.debug(f"eventName: {record['eventName']}")
+        logger.debug("DynamoDB Record: " + json.dumps(record['dynamodb'], indent=2))
 
-    print('Successfully processed {} records.'.format(len(event['Records'])))
+    logger.debug('Successfully processed {} records.'.format(len(event['Records'])))
     return "Done"
 
 
@@ -55,7 +60,7 @@ def add_records(event, context):
     my_kwargs = event.get('kwargs')
     max_records = int(my_kwargs['max'])
     num_records_to_add = randint(1,max_records)
-    print(f"*** DynamoDbEvents.add_records.max records: {num_records_to_add}")
+    logger.debug(f"*** DynamoDbEvents.add_records.max records: {num_records_to_add}")
 
     table = dynamodb.Table('zappa_stream_table')
 
@@ -64,7 +69,7 @@ def add_records(event, context):
         # with 32 characters.
         random_id = ''.join([choice(string.ascii_letters + string.digits) for n in range(32)])
         random_prefix = ''.join([choice(string.ascii_letters + string.digits) for n in range(8)])
-        print(f"put_item: {random_id} with value: {random_prefix}")
+        logger.debug(f"put_item: {random_id} with value: {random_prefix}")
 
         table.put_item(
             Item={

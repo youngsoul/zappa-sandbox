@@ -8,17 +8,16 @@
         "s3_bucket": "zappa-zuqeju0v0",
         "timeout_seconds": 60,
         "delete_s3_zip": false,
-        "log_level": "ERROR",
+        "log_level": "DEBUG",
         "exclude": [
-            "docs",
+            "proj_docs",
             "README.md",
             "dev_notes.txt",
             "DynamoDbEvents.py",
             "flask_async.http",
             "RecurringEvents.py",
             "S3Event.py"
-        ],
-
+        ]
     },
     "flask_async": {
         "app_function": "FlaskAsync.app",
@@ -31,7 +30,18 @@
         "async_response_table": "flask_async_response",
         "async_response_table_read_capacity": 2,
         "async_response_table_write_capacity": 1,
-        "timeout_seconds": 60
+        "timeout_seconds": 60,
+        "delete_s3_zip": false,
+        "log_level": "ERROR",
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "S3Event.py"
+        ]
     },
     "s3_env": {
         "aws_region": "us-east-1",
@@ -61,6 +71,16 @@
                 }
             }
 
+        ],
+        "delete_s3_zip": false,
+        "log_level": "ERROR",
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py"
         ]
     },
     "recurring_env": {
@@ -83,6 +103,16 @@
                 "kwargs": {"key1": "value1", "key2": "value2"},
                 "expression": "rate(2 minutes)"
             }
+        ],
+        "delete_s3_zip": false,
+        "log_level": "ERROR",
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "S3Event.py"
         ]
     },
     "dynamo_env": {
@@ -110,6 +140,72 @@
                 "expression": "rate(1 minute)"
             }
 
+        ],
+        "delete_s3_zip": false,
+        "log_level": "ERROR",
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "S3Event.py"
+        ]
+    },
+    "sns_env": {
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "sns_event_test",
+        "runtime": "python3.6",
+        "s3_bucket": "pryan-landing",
+        "timeout_seconds": 120,
+        "use_apigateway": false,
+        "xray_tracing": true,
+        "delete_s3_zip": false,
+        "log_level": "DEBUG",
+        "events": [
+            {
+                "function": "SnsSubscriber.sns_listener",
+                "event_source": {
+                    "arn":  "arn:aws:sns:us-east-1:485071734737:zappa-test-topic",
+                    "events": [
+                        "sns:Publish"
+                    ]
+                }
+            }
+        ],
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "S3Event.py"
+        ]
+    },
+    "flask_sns_sqs": {
+        "app_function": "FlaskSnsSqs.app",
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "zappa-sns-sqs",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-zuqeju0v0",
+        "timeout_seconds": 60,
+        "delete_s3_zip": false,
+        "log_level": "DEBUG",
+        "environment_variables": {
+            "SNS_ARN": "arn:aws:sns:us-east-1:485071734737:zappa-test-topic"
+        },
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "S3Event.py"
         ]
     }
 }
