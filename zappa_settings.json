@@ -67,7 +67,11 @@
                     "arn": "arn:aws:s3:::pryan-staging",
                     "events": [
                         "s3:ObjectCreated:*"
-                    ]
+                    ],
+                    "key_filters": [{
+					    "type": "prefix",
+					    "value": "trigger"
+				    }]
                 }
             }
 
@@ -205,7 +209,40 @@
             "DynamoDbEvents.py",
             "flask_async.http",
             "RecurringEvents.py",
-            "S3Event.py"
+            "S3Event.py",
+            "SqsSubscriber.py"
+        ]
+    },
+    "sqs_env": {
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "sqs_event_test",
+        "runtime": "python3.6",
+        "s3_bucket": "pryan-landing",
+        "timeout_seconds": 120,
+        "use_apigateway": false,
+        "xray_tracing": true,
+        "delete_s3_zip": false,
+        "log_level": "DEBUG",
+        "events": [
+            {
+                "function": "SqsSubscriber.sqs_listener",
+                "event_source": {
+                    "arn":  "arn:aws:sqs:us-east-1:485071734737:zappa-test-queue",
+                    "batch_size": 1, // Max: 10  Use 1 to trigger immediate processing
+                    "enabled": true
+                }
+            }
+        ],
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "S3Event.py",
+            "SnsSubscriber.py"
         ]
     }
 }
