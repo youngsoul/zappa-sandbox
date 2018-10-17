@@ -14,3 +14,26 @@ Content-Type: application/json
   "id": 999,
   "value": "content"
 }
+
+###
+
+POST http://localhost:5000/flask_microservice/user
+Content-Type: application/json
+
+{
+  "username": "foo2",
+  "password": "bar",
+  "emailaddress": "foo2@fighters.mu"
+}
+
+###
+
+GET http://localhost:5000/flask_microservice/user/foo2@fighters.mu
+
+###
+
+GET https://nfr9ihl8ek.execute-api.us-east-1.amazonaws.com/flask_microservice/flask_microservice/user/foo2@fighers.mu
+
+###
+
+

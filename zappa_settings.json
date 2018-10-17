@@ -1,4 +1,27 @@
 {
+    "flask_microservice": {
+        "app_function": "FlaskMicroservice.app",
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "zappa-micro",
+        "runtime": "python3.6",
+        "s3_bucket": "zappa-zuqeju0v0",
+        "timeout_seconds": 60,
+        "delete_s3_zip": false,
+        "log_level": "DEBUG",
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "S3Event.py",
+            "FlaskAsync.py",
+            "FlaskSnsSqs.py",
+            "FlaskSimple.py"
+        ]
+    },
     "flask_simple": {
         "app_function": "FlaskSimple.app",
         "aws_region": "us-east-1",
@@ -16,7 +39,10 @@
             "DynamoDbEvents.py",
             "flask_async.http",
             "RecurringEvents.py",
-            "S3Event.py"
+            "S3Event.py",
+            "FlaskAsync.py",
+            "FlaskMicroservice.py",
+            "FlaskSnsSqs.py"
         ]
     },
     "flask_async": {
@@ -40,7 +66,9 @@
             "DynamoDbEvents.py",
             "flask_async.http",
             "RecurringEvents.py",
-            "S3Event.py"
+            "S3Event.py",
+            "FlaskMicroservice.py",
+            "FlaskAsync.py"
         ]
     },
     "s3_env": {
@@ -84,7 +112,11 @@
             "dev_notes.txt",
             "DynamoDbEvents.py",
             "flask_async.http",
-            "RecurringEvents.py"
+            "RecurringEvents.py",
+            "FlaskAsync.py",
+            "FlaskMicroservice.py",
+            "FlaskSimple.py",
+            "FlaskSnsSqs.py"
         ]
     },
     "recurring_env": {
@@ -116,7 +148,11 @@
             "dev_notes.txt",
             "DynamoDbEvents.py",
             "flask_async.http",
-            "S3Event.py"
+            "S3Event.py",
+            "FlaskAsync.py",
+            "FlaskMicroservice.py",
+            "FlaskSimple.py",
+            "FlaskSnsSqs.py"
         ]
     },
     "dynamo_env": {
@@ -154,7 +190,11 @@
             "DynamoDbEvents.py",
             "flask_async.http",
             "RecurringEvents.py",
-            "S3Event.py"
+            "S3Event.py",
+            "FlaskMicroservice.py",
+            "FlaskAsync.py",
+            "FlaskSimple.py",
+            "FlaskSnsSqs.py"
         ]
     },
     "sns_env": {
@@ -186,7 +226,11 @@
             "DynamoDbEvents.py",
             "flask_async.http",
             "RecurringEvents.py",
-            "S3Event.py"
+            "S3Event.py",
+            "FlaskMicroservice.py",
+            "FlaskAsync.py",
+            "FlaskSimple.py",
+            "FlaskSnsSqs.py"
         ]
     },
     "flask_sns_sqs": {
@@ -210,7 +254,10 @@
             "flask_async.http",
             "RecurringEvents.py",
             "S3Event.py",
-            "SqsSubscriber.py"
+            "FlaskMicroservice.py",
+            "SqsSubscriber.py",
+            "FlaskAsync.py",
+            "FlaskSimple.py"
         ]
     },
     "sqs_env": {
@@ -242,7 +289,11 @@
             "flask_async.http",
             "RecurringEvents.py",
             "S3Event.py",
-            "SnsSubscriber.py"
+            "SnsSubscriber.py",
+            "FlaskMicroservice.py",
+            "FlaskAsync.py",
+            "FlaskSimple.py",
+            "FlaskSnsSqs.py"
         ]
     }
 }
