@@ -32,7 +32,19 @@ GET http://localhost:5000/flask_microservice/user/foo2@fighters.mu
 
 ###
 
-GET https://nfr9ihl8ek.execute-api.us-east-1.amazonaws.com/flask_microservice/flask_microservice/user/foo2@fighers.mu
+
+POST https://jnqvde8f0d.execute-api.us-east-1.amazonaws.com/flask_microservice/flask_microservice/user
+Content-Type: application/json
+
+{
+  "username": "bob",
+  "password": "builder",
+  "emailaddress": "bob@builder.com"
+}
+
+###
+
+GET https://jnqvde8f0d.execute-api.us-east-1.amazonaws.com/flask_microservice/flask_microservice/user/bob@builder.com
 
 ###
 
