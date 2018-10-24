@@ -33,7 +33,7 @@ GET http://localhost:5000/flask_microservice/user/foo2@fighters.mu
 ###
 
 
-POST https://jnqvde8f0d.execute-api.us-east-1.amazonaws.com/flask_microservice/flask_microservice/user
+POST {{host-url}}/flask_microservice/user
 Content-Type: application/json
 
 {
@@ -44,7 +44,7 @@ Content-Type: application/json
 
 ###
 
-GET https://jnqvde8f0d.execute-api.us-east-1.amazonaws.com/flask_microservice/flask_microservice/user/bob@builder.com
+GET {{host-url}}/flask_microservice/user/bob@builder.com
 
 ###
 
