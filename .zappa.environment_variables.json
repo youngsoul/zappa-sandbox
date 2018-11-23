@@ -1,0 +1,14 @@
+{
+    "lambda_env_variables": {
+        "environment_variables": {
+            "callback_key1": "callback_env_value_1",
+            "callback_key2": "callback_env_value_2",
+            "callback_key3": "callback_env_value_3"
+        },
+        "aws_environment_variables": {
+            "callback_aws_key1": "callback_aws_env_value1",
+            "callback_aws_key2": "callback_aws_env_value2"
+        }
+    }
+
+}
