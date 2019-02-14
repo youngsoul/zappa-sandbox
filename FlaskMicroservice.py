@@ -11,6 +11,10 @@ logger.setLevel(logging.DEBUG)
 
 app = Flask(__name__)
 
+@app.route("/", methods=['GET'])
+def home():
+    return "Congratulations! Flask Microservice Deployed!"
+
 # here is how we are handling routing with flask:
 @app.route('/flask_microservice/user', methods=['POST'])
 def user_create():
