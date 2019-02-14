@@ -10,6 +10,18 @@ Repo contains example code for working with Zappa
 
 *Unable to import module 'handler': No module named 'botocore.docs'*
 
+## Setup
+
+```pip install zappa```
+
+- below is only needed for some of the examples
+
+```pip install requests```
+
+- the pyalexa-skill is installed for the create_aws_lambda.py function
+
+```pip install pyalexa-skill```
+
 
 ## AWS CLI
 
@@ -47,7 +59,7 @@ zappa undeploy flask_async --remove-logs
 
 ## Zappa S3 Events
 
-For S3 events to work, you **CANNOT** include the lambda_handler in the config.  By leaving this out, Zappa will install its own default lambda implementation that will handle the functions for the events.
+For S3 events to work, you **CANNOT** include the lambda_handler option in the config.  By leaving this out, Zappa will install its own default lambda implementation that will handle the functions for the events.
 
 
 
@@ -85,7 +97,17 @@ For S3 events to work, you **CANNOT** include the lambda_handler in the config. 
 
 ```
 
+- Example Commands
+
 zappa deploy s3_env
+
+zappa undeploy s3_env
+
+zappa update s3_env
+
+The python file has a function called, 'lambda_handler' that is not tied to any event.  This function can be invoked with the command below.
+
+zappa invoke s3_env 'S3Events.lambda_handler'
 
 ### Zappa Recurring Events
 
@@ -176,3 +198,22 @@ This example creates one event listener for scheduled, recurring events that wil
     }
 
 ```
+
+### Standard Lambda Deployment
+
+#### Standard Lambda with no dependencies
+
+you can copy and paste the contents of standard_lambda.py into the Lambda window
+or build a zip distribution which will just contain that file.
+
+```create_aws_lambda.py -i standard_lambda.py -l ""``` 
+
+The requests_lambda.py is dependent upon the requests package and the command
+below shows how to create a zip distribution to include those.
+
+When deploying, create an s3 event to list for a file being uploaded.
+
+```create_aws_lambda.py -i requests_lambda.py -l requests_lambda_requirements.txt```
+
+ 
+

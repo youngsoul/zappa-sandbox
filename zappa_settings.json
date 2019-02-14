@@ -1,4 +1,32 @@
 {
+    "standard_lambda": {
+        "lambda_handler": "standard_lambda",
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "standard-lambda",
+        "runtime": "python3.6",
+        "s3_bucket": "pryan-zappa-deployments",
+        "timeout_seconds": 60,
+        "delete_s3_zip": true,
+        "log_level": "DEBUG",
+        "use_apigateway": false,
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "S3Event.py",
+            "SnsSubscriber.py",
+            "FlaskMicroservice.py",
+            "FlaskAsync.py",
+            "FlaskSimple.py",
+            "FlaskSnsSqs.py",
+            "*.png"
+        ]
+
+    },
     "flask_microservice": {
         "app_function": "FlaskMicroservice.app",
         "aws_region": "us-east-1",
@@ -20,7 +48,9 @@
             "S3Event.py",
             "FlaskAsync.py",
             "FlaskSnsSqs.py",
-            "FlaskSimple.py"
+            "FlaskSimple.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "flask_simple": {
@@ -43,7 +73,9 @@
             "S3Event.py",
             "FlaskAsync.py",
             "FlaskMicroservice.py",
-            "FlaskSnsSqs.py"
+            "FlaskSnsSqs.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "flask_async": {
@@ -69,7 +101,9 @@
             "RecurringEvents.py",
             "S3Event.py",
             "FlaskMicroservice.py",
-            "FlaskAsync.py"
+            "FlaskAsync.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "s3_env": {
@@ -117,7 +151,9 @@
             "FlaskAsync.py",
             "FlaskMicroservice.py",
             "FlaskSimple.py",
-            "FlaskSnsSqs.py"
+            "FlaskSnsSqs.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "recurring_env": {
@@ -153,7 +189,9 @@
             "FlaskAsync.py",
             "FlaskMicroservice.py",
             "FlaskSimple.py",
-            "FlaskSnsSqs.py"
+            "FlaskSnsSqs.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "dynamo_env": {
@@ -195,7 +233,9 @@
             "FlaskMicroservice.py",
             "FlaskAsync.py",
             "FlaskSimple.py",
-            "FlaskSnsSqs.py"
+            "FlaskSnsSqs.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "sns_env": {
@@ -231,7 +271,9 @@
             "FlaskMicroservice.py",
             "FlaskAsync.py",
             "FlaskSimple.py",
-            "FlaskSnsSqs.py"
+            "FlaskSnsSqs.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "flask_sns_sqs": {
@@ -258,7 +300,9 @@
             "FlaskMicroservice.py",
             "SqsSubscriber.py",
             "FlaskAsync.py",
-            "FlaskSimple.py"
+            "FlaskSimple.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "sqs_env": {
@@ -294,7 +338,9 @@
             "FlaskMicroservice.py",
             "FlaskAsync.py",
             "FlaskSimple.py",
-            "FlaskSnsSqs.py"
+            "FlaskSnsSqs.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     },
     "lambda_env_variables": {
@@ -339,7 +385,9 @@
             "FlaskAsync.py",
             "FlaskSimple.py",
             "FlaskSnsSqs.py",
-            "*.png"
+            "*.png",
+            "requests_lambda.py",
+            "standard_lambda.py"
         ]
     }
 
