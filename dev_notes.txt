@@ -61,4 +61,4 @@ couple of more examples to consider
 }
 
 
-create_aws_lambda.py -i requests_lambda.py -l requests_lambda_requirements.txt
+python create_aws_lambda.py -i requests_lambda.py -l requests_lambda_requirements.txt
