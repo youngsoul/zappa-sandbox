@@ -19,7 +19,10 @@ def lambda_handler(event, context):
         response = requests.get('https://api.github.com')
         print(f"*** Github response: {response.json()}")
 
-        return True
+        return {
+            'statusCode': 200,
+            'body': json.dumps('Hello from Lambda!')
+        }
 
     except Exception as e:
         print(e)

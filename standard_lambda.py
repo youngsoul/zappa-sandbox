@@ -15,8 +15,11 @@ def lambda_handler(event, context):
         key = event['Records'][0]['s3']['object']['key']
         print(f"*** {bucket}, {key}")
 
-        return True
-    
+        return {
+            'statusCode': 200,
+            'body': json.dumps('Hello from Lambda!')
+        }
+
     except Exception as e:
         print(e)
         print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
