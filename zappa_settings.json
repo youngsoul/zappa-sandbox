@@ -1,4 +1,40 @@
 {
+    "s3_requests_env": {
+        "aws_region": "us-east-1",
+        "profile_name": "spr",
+        "project_name": "s3_requests_test",
+        "runtime": "python3.6",
+        "s3_bucket": "pryan-zappa-deployments",
+        "timeout_seconds": 60,
+        "use_apigateway": false,
+        "events": [
+            {
+                "function": "requests_lambda.lambda_handler",
+                "event_source": {
+                    "arn": "arn:aws:s3:::pryan-spr-test",
+                    "events": [
+                        "s3:ObjectCreated:*"
+                    ]
+                }
+            }
+        ],
+        "delete_s3_zip": false,
+        "log_level": "ERROR",
+        "exclude": [
+            "proj_docs",
+            "README.md",
+            "dev_notes.txt",
+            "DynamoDbEvents.py",
+            "flask_async.http",
+            "RecurringEvents.py",
+            "FlaskAsync.py",
+            "FlaskMicroservice.py",
+            "FlaskSimple.py",
+            "FlaskSnsSqs.py",
+            "requests_lambda.py",
+            "standard_lambda.py"
+        ]
+    },
     "standard_lambda": {
         "lambda_handler": "standard_lambda",
         "aws_region": "us-east-1",
