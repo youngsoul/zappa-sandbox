@@ -9,7 +9,7 @@
         "use_apigateway": false,
         "events": [
             {
-                "function": "requests_lambda.lambda_handler",
+                "function": "RequestsLambda.lambda_handler",
                 "event_source": {
                     "arn": "arn:aws:s3:::pryan-spr-test",
                     "events": [
@@ -19,21 +19,7 @@
             }
         ],
         "delete_s3_zip": false,
-        "log_level": "ERROR",
-        "exclude": [
-            "proj_docs",
-            "README.md",
-            "dev_notes.txt",
-            "DynamoDbEvents.py",
-            "flask_async.http",
-            "RecurringEvents.py",
-            "FlaskAsync.py",
-            "FlaskMicroservice.py",
-            "FlaskSimple.py",
-            "FlaskSnsSqs.py",
-            "requests_lambda.py",
-            "standard_lambda.py"
-        ]
+        "log_level": "ERROR"
     },
     "standard_lambda": {
         "lambda_handler": "standard_lambda",

@@ -212,7 +212,7 @@ def main(argv):
     include_files = ''
 
     try:
-        opts, args = getopt.getopt(argv, "hr:i:l:", ["root=", "include=", "libraries"])
+        opts, args = getopt.getopt(argv, "hr:i:l:", ["root=", "include=", "libraries="])
     except getopt.GetoptError:
         print('create_aws_lambda.py -r <root project dir> -i <include files> -l <file of python libraries, e.g. requirements.txt>')
         print('if -r option not supplied it will look for PWD environment variable')
